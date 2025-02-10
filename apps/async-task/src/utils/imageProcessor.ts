@@ -16,7 +16,7 @@ export async function processImage(imageUrl: string): Promise<{
   exif_gps_location?: string | null;
 }> {
   try {
-    const response = await axios.post(`${env.IMAGE_PROCESS_SERVER_URL}/api/process-image`, {
+    const response = await axios.post(`${env.IMAGE_PROCESS_SERVER_URL}/api/process-image/`, {
       image_url: imageUrl,
     });
 

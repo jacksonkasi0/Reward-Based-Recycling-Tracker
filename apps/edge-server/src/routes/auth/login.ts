@@ -39,13 +39,14 @@ loginRoute.post("/", async (c) => {
   if (!isValid) {
     return c.json({ error: "Invalid credentials" }, 401);
   }
-
-  // Create a JWT token (expires in 1 hour).
+  
+  // Create a JWT token (expires in 30 days).
   const tokenPayload: JWTPayload = {
     sub: user.id,
     email: user.email,
-    exp: Math.floor(Date.now() / 1000) + 3600,
+    exp: Math.floor(Date.now() / 1000) + 30 * 24 * 60 * 60, // 30 days in seconds
   };
+
   const token = await signJWT(tokenPayload, c.env.JWT_SECRET);
   return c.json({ message: "Login successful", token });
 });
