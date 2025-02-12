@@ -19,6 +19,7 @@ import type { JWTPayload } from "@repo/jwt";
 
 // Import Image Processor Utility
 import { processImage } from "@/utils/imageProcessor";
+import { EmailService } from "@/utils/email-services";
 
 // Import validation schema
 import { validationSchema } from "@/validation/process";
@@ -60,6 +61,7 @@ route.post(
         .where(eq(tbl_image_hashes.image_hash, image_hash));
 
       if (existingImage.length > 0) {
+        await EmailService.sendFailureEmail(user.email);
         return c.json({ error: "Duplicate image detected" }, 409);
       }
 
@@ -120,6 +122,9 @@ route.post(
         });
       }
 
+      // **Step 8: Send Success Email**
+      await EmailService.sendSuccessEmail(user.email, updatedPoints);
+
       return c.json({
         message: "Image processed & recycling log created",
         new_points: updatedPoints,
@@ -127,6 +132,10 @@ route.post(
 
     } catch (error: any) {
       console.error("❌ API Error:", error);
+
+      // Send failure email
+      await EmailService.sendFailureEmail(user.email);
+
       return c.json({ error: "Processing failed", details: error.message }, 500);
     }
   }
