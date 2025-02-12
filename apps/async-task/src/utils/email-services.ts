@@ -1,5 +1,7 @@
-import { env } from "@/config/env";
 import axios from "axios";
+
+// ** Import config
+import { env } from "@/config/env";
 
 export class EmailService {
   private static BASE_URL = env.IMAGE_PROCESS_SERVER_URL;
