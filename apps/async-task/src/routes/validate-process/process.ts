@@ -61,7 +61,7 @@ route.post(
         .where(eq(tbl_image_hashes.image_hash, image_hash));
 
       if (existingImage.length > 0) {
-        await EmailService.sendFailureEmail(userData.email);
+        await EmailService.sendFailureEmail(user.email);
         return c.json({ error: "Duplicate image detected" }, 409);
       }
 
@@ -123,7 +123,7 @@ route.post(
       }
 
       // **Step 8: Send Success Email**
-      await EmailService.sendSuccessEmail(userData.email, updatedPoints);
+      await EmailService.sendSuccessEmail(user.email, updatedPoints);
 
       return c.json({
         message: "Image processed & recycling log created",
