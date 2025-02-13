@@ -2,9 +2,13 @@
 
 ## Project Details
 
-- **API Dog:** <https://j44cgdu55d.apidog.io/>
-- **Server Link:** <https://recycling-server.contentguru.workers.dev/>
-- **Python server**: <https://github.com/Anusha266/reward-based-recycling-backend-python>
+- **Kotlin Mobile APP - REPO**: <https://github.com/sankarbehera45/recycler-tracker>
+- **Python Server - REPO**: <https://github.com/Anusha266/reward-based-recycling-backend-python>
+
+- **API Dog(API document)**: <https://j44cgdu55d.apidog.io/>
+
+- **Edge Server Link**: <https://recycling-server.contentguru.workers.dev/>
+- **Python Server**: <https://github.com/Anusha266/reward-based-recycling-backend-python>
 
 - **Bucket:**
   - <https://tigris.dev>
